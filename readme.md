@@ -1,63 +1,38 @@
-# node-module-boilerplate
+# easy-web3
 
-> Boilerplate to kickstart creating a Node.js module
-
-This is what I use for [my own modules](https://www.npmjs.com/~sindresorhus).
-
-Also check out [`node-cli-boilerplate`](https://github.com/sindresorhus/node-cli-boilerplate).
-
-## Getting started
-
-**Click the "Use this template" button.**
-
-Alternatively, create a new directory and then run:
-
-```sh
-curl -fsSL https://github.com/sindresorhus/node-module-boilerplate/archive/main.tar.gz | tar -xz --strip-components=1
-```
-
----
-
-**Remove everything from here and above**
-
----
-
-# unicorn-fun
-
-> My awesome module
+> Middleware for calling blockchain functions via javascript
 
 ## Install
 
 ```sh
-npm install unicorn-fun
+npm install easy-web3
 ```
 
 ## Usage
 
 ```js
-import unicornFun from 'unicorn-fun';
+import { mint } from 'easy-web3';
 
-unicornFun('unicorns');
-//=> 'unicorns & rainbows'
+mint({name:'My New Token', symbol:'MNT', supply: 1,000,000,});
+//=> '0x1234...' deployed token address
 ```
 
 ## API
 
-### unicornFun(input, options?)
+### mint(tokenObject, options?)
 
 #### input
 
-Type: `string`
+Type: `object`
 
-Lorem ipsum.
+Fields in the tokenObject vary according to the type of token you are minting.
 
 #### options
 
 Type: `object`
 
-##### postfix
-
-Type: `string`\
-Default: `'rainbows'`
-
-Lorem ipsum.
+```
+	provider: the wallet provider of account that will be minting tokens
+	onSuccess: function to call on success
+	onError: function to call on error
+```
