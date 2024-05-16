@@ -1,13 +1,13 @@
 import test from 'ava';
-import unicornFun from './index.js';
+import { mint } from './index.js';
 
 test('main', t => {
 	t.throws(() => {
-		unicornFun(123);
+		mint(123);
 	}, {
 		instanceOf: TypeError,
-		message: 'Expected a string, got number',
+		message: "Expected an object to be passed into 'mint', got number",
 	});
 
-	t.is(unicornFun('unicorns'), 'unicorns & rainbows');
+	t.is(mint({ name: 'testToken' }), '0xtestToken');
 });
